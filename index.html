@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mata Mahakali College of Ayurveda & Hospital, Warora</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Marcellus&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fbfaf7;
+      color: #2e2b27;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Marcellus', serif; font-weight: 400; letter-spacing: 0.5px; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Top Bar */
+    .top-bar { background: #1e3b2c; color: #e9e1d4; padding: 10px 0; font-size: 0.9rem; }
+    .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .top-bar i { margin-right: 6px; color: #b8a28b; }
+    .contact-info span { margin-right: 20px; }
+    .social-icons a { color: #e9e1d4; margin-left: 15px; transition: color 0.2s; }
+    .social-icons a:hover { color: #d4b28c; }
+
+    /* Navbar */
+    .navbar { background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo h1 { font-size: 1.8rem; color: #2d5e3b; line-height: 1.2; }
+    .logo span { font-size: 0.8rem; color: #9b7b5c; font-family: 'Inter', sans-serif; letter-spacing: 1px; display: block; font-weight: 400; }
+    .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
+    .nav-links a { text-decoration: none; color: #3b3a36; font-weight: 500; font-size: 1rem; transition: color 0.2s; }
+    .nav-links a:hover { color: #2d5e3b; }
+
+    .btn { display: inline-block; background: #2d5e3b; color: #ffffff; padding: 12px 28px; border-radius: 40px; text-decoration: none; font-weight: 500; transition: all 0.3s; border: none; cursor: pointer; font-size: 0.95rem; }
+    .btn:hover { background: #1e3b2c; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); }
+    .btn-outline { background: transparent; border: 1.5px solid #2d5e3b; color: #2d5e3b; padding: 10px 24px; }
+    .btn-outline:hover { background: #2d5e3b; color: #fff; }
+
+    /* Hero */
+    .hero { padding: 70px 0; background: linear-gradient(135deg, #f2efe8 0%, #f9f7f2 100%); }
+    .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .hero-content h2 { font-size: 2.8rem; color: #1e3b2c; line-height: 1.2; margin-bottom: 16px; }
+    .hero-content h2 span { color: #9b7b5c; font-weight: 500; }
+    .hero-content p { font-size: 1.1rem; color: #4e4b45; margin-bottom: 32px; }
+    .hero-image {
+      background: #d9cfc0;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      height: 380px; display: flex; align-items: center; justify-content: center;
+      color: #ffffff; text-align: center; font-size: 2rem; font-family: 'Marcellus', serif;
+      box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.2);
+      background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop');
+      background-size: cover; background-position: center; position: relative; overflow: hidden;
+    }
+    .hero-image::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(30, 59, 44, 0.5); }
+    .hero-image h3 { position: relative; z-index: 2; font-size: 2.2rem; color: #fff; padding: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+    /* Stats */
+    .stats { background: #ffffff; padding: 40px 0; border-bottom: 1px solid #eee8e0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; gap: 20px; }
+    .stat-item h3 { font-size: 2.5rem; color: #2d5e3b; margin-bottom: 4px; }
+    .stat-item p { color: #7a756d; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Sections */
+    section { padding: 70px 0; }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-header h2 { font-size: 2.5rem; color: #1e3b2c; margin-bottom: 12px; }
+    .section-header p { color: #7a756d; max-width: 700px; margin: 0 auto; font-size: 1.05rem; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .about-text h3 { font-size: 1.9rem; color: #1e3b2c; margin-bottom: 18px; }
+    .about-text p { color: #4e4b45; margin-bottom: 16px; font-size: 1rem; }
+    .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    .highlight-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: #1e3b2c; }
+    .highlight-item i { color: #9b7b5c; font-size: 1.2rem; width: 24px; }
+    .about-image {
+      background: #d9cfc0; border-radius: 24px; height: 380px;
+      background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1000&auto=format&fit=crop');
+      background-size: cover; background-position: center;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+    }
+
+    /* BAMS */
+    .course-card {
+      background: #ffffff; border-radius: 30px;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+      padding: 40px; display: grid; grid-template-columns: 2fr 1fr;
+      gap: 40px; align-items: start; transition: transform 0.3s;
+      border: 1px solid #f0ede8;
+    }
+    .course-card:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -15px rgba(45, 94, 59, 0.15); }
+    .course-info h3 { font-size: 2rem; color: #1e3b2c; margin-bottom: 6px; }
+    .course-tag { background: #e3efe8; color: #1e3b2c; padding: 4px 16px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; display: inline-block; margin-bottom: 20px; }
+    .course-info p { color: #4e4b45; margin-bottom: 24px; font-size: 1rem; }
+    .course-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 30px; margin-bottom: 30px; }
+    .detail-item { display: flex; gap: 12px; align-items: flex-start; }
+    .detail-item i { color: #9b7b5c; font-size: 1.1rem; margin-top: 3px; width: 20px; }
+    .detail-item div { font-size: 0.95rem; }
+    .detail-item strong { color: #1e3b2c; display: block; font-weight: 600; }
+    .detail-item span { color: #5e5a53; }
+    .course-cta { background: #f4f0ea; border-radius: 24px; padding: 28px 24px; text-align: center; }
+    .course-cta h4 { font-size: 1.4rem; color: #1e3b2c; margin-bottom: 8px; }
+    .course-cta p { font-size: 0.9rem; color: #6b675f; margin-bottom: 20px; }
+    .course-cta .btn { width: 100%; margin-bottom: 10px; }
+    .course-cta .btn-outline { margin-bottom: 0; }
+
+    /* Hospital */
+    .hospital-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .hospital-text h3 { font-size: 1.9rem; color: #1e3b2c; margin-bottom: 18px; }
+    .hospital-text p { color: #4e4b45; margin-bottom: 16px; }
+    .hospital-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+    .hospital-features .feature { background: #ffffff; padding: 12px 16px; border-radius: 40px; font-size: 0.9rem; color: #1e3b2c; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border: 1px solid #eee8e0; }
+    .hospital-features .feature i { color: #9b7b5c; }
+    .hospital-image {
+      background: #d9cfc0; border-radius: 24px; height: 380px;
+      background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop');
+      background-size: cover; background-position: center;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+    }
+
+    /* Admission Banner */
+    .admission-banner { background: #1e3b2c; color: #fff; padding: 50px 0; border-radius: 40px; margin: 20px auto; max-width: 1100px; }
+    .admission-banner .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
+    .admission-banner h3 { font-size: 2rem; margin-bottom: 8px; }
+    .admission-banner p { opacity: 0.9; }
+    .admission-banner .btn { background: #ffffff; color: #1e3b2c; padding: 14px 36px; font-weight: 600; }
+    .admission-banner .btn:hover { background: #f0ede8; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: #ffffff; border-radius: 30px; padding: 40px; box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.05); border: 1px solid #f0ede8; }
+    .contact-info-block h3 { font-size: 1.8rem; color: #1e3b2c; margin-bottom: 12px; }
+    .contact-info-block p { color: #4e4b45; margin-bottom: 24px; }
+    .contact-detail { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
+    .contact-detail i { font-size: 1.3rem; color: #9b7b5c; width: 30px; margin-top: 4px; }
+    .contact-detail strong { color: #1e3b2c; display: block; font-size: 1rem; margin-bottom: 2px; }
+    .contact-detail span, .contact-detail a { color: #5e5a53; font-size: 0.95rem; text-decoration: none; word-break: break-word; }
+    .contact-detail a:hover { color: #2d5e3b; text-decoration: underline; }
+    .map-placeholder { background: #f4f0ea; border-radius: 20px; display: flex; align-items: center; justify-content: center; height: 100%; min-height: 280px; color: #7a756d; font-size: 1.1rem; border: 1px dashed #d4cfc5; padding: 20px; text-align: center; }
+
+    /* Footer */
+    footer { background: #0e1f17; color: #d4cfc5; padding: 50px 0 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 40px; }
+    .footer-col h4 { color: #ffffff; font-family: 'Marcellus', serif; font-size: 1.3rem; margin-bottom: 20px; font-weight: 400; }
+    .footer-col p { font-size: 0.9rem; line-height: 1.8; opacity: 0.8; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: #d4cfc5; text-decoration: none; transition: color 0.2s; font-size: 0.9rem; }
+    .footer-col ul li a:hover { color: #b8a28b; }
+    .footer-col i { margin-right: 10px; color: #9b7b5c; width: 18px; }
+    .copyright { border-top: 1px solid #2a3b32; padding-top: 24px; text-align: center; font-size: 0.85rem; opacity: 0.7; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero .container, .about-grid, .hospital-grid { grid-template-columns: 1fr; }
+      .hero-image { height: 300px; order: -1; }
+      .hero-content h2 { font-size: 2.2rem; }
+      .course-card { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .about-image, .hospital-image { height: 280px; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar .container { flex-wrap: wrap; gap: 16px; }
+      .nav-links { gap: 16px; flex-wrap: wrap; }
+      .hero-content h2 { font-size: 1.8rem; }
+      .course-details-grid { grid-template-columns: 1fr; }
+      .admission-banner .container { flex-direction: column; text-align: center; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .about-highlights { grid-template-columns: 1fr; }
+      .hospital-features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 9823423339</span>
+        <span><i class="fas fa-envelope"></i> mmbspm3339@gmail.com</span>
+        <span><i class="fas fa-map-marker-alt"></i> Warora, Chandrapur</span>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <h1>Mata Mahakali</h1>
+        <span>College of Ayurveda & Hospital, Warora</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#courses">BAMS</a></li>
+        <li><a href="#hospital">Hospital</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" class="btn">Apply Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Nurturing <span>Ayurveda</span> Healers for Tomorrow</h2>
+        <p>Mata Mahakali College of Ayurveda & Hospital, Warora — blending ancient wisdom with modern healthcare education.</p>
+        <a href="#courses" class="btn" style="margin-right: 12px;">Explore BAMS</a>
+        <a href="#contact" class="btn-outline btn">Contact Us</a>
+      </div>
+      <div class="hero-image">
+        <h3>Ayurveda | Holistic Health</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="container stats-grid">
+      <div class="stat-item"><h3>25+</h3><p>Years of Legacy</p></div>
+      <div class="stat-item"><h3>100+</h3><p>Expert Faculty</p></div>
+      <div class="stat-item"><h3>200</h3><p>Hospital Beds</p></div>
+      <div class="stat-item"><h3>98%</h3><p>Placement Rate</p></div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>About Our College</h2>
+        <p>Established with a vision to revive and propagate the ancient science of Ayurveda through quality education, research, and patient care.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h3>Mata Mahakali College of Ayurveda & Hospital, Warora</h3>
+          <p>Located in the serene town of Warora, Chandrapur district, our institution is dedicated to producing competent Ayurvedic practitioners who can serve society with holistic healthcare. The college is affiliated with Maharashtra University of Health Sciences (MUHS), Nashik, and recognized by the National Commission for Indian System of Medicine (NCISM).</p>
+          <p>Our campus features well-equipped classrooms, advanced laboratories, a rich herbal garden, a library with rare Ayurvedic texts, and a 200-bedded hospital for hands-on clinical training. We believe in nurturing the physical, mental, and spiritual well-being of our students.</p>
+          <div class="about-highlights">
+            <div class="highlight-item"><i class="fas fa-check-circle"></i> NCISM Recognized</div>
+            <div class="highlight-item"><i class="fas fa-check-circle"></i> MUHS Affiliated</div>
+            <div class="highlight-item"><i class="fas fa-check-circle"></i> 200-Bed Hospital</div>
+            <div class="highlight-item"><i class="fas fa-check-circle"></i> Herbal Garden</div>
+            <div class="highlight-item"><i class="fas fa-check-circle"></i> Research Focus</div>
+            <div class="highlight-item"><i class="fas fa-check-circle"></i> Experienced Faculty</div>
+          </div>
+        </div>
+        <div class="about-image"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAMS -->
+  <section id="courses" style="background: #fbfaf7;">
+    <div class="container">
+      <div class="section-header">
+        <h2>BAMS Program</h2>
+        <p>Bachelor of Ayurvedic Medicine & Surgery — our flagship undergraduate degree.</p>
+      </div>
+      <div class="course-card">
+        <div class="course-info">
+          <span class="course-tag">Bachelor of Ayurvedic Medicine & Surgery</span>
+          <h3>BAMS</h3>
+          <p>BAMS is a 5.5-year undergraduate degree (including 1 year internship) that integrates modern medical sciences with the ancient wisdom of Ayurveda. The program is recognized by NCISM and affiliated to Maharashtra University of Health Sciences (MUHS).</p>
+          <div class="course-details-grid">
+            <div class="detail-item"><i class="fas fa-calendar-alt"></i><div><strong>Duration</strong><span>5.5 years (4.5 yrs + 1 yr internship)</span></div></div>
+            <div class="detail-item"><i class="fas fa-graduation-cap"></i><div><strong>Eligibility</strong><span>10+2 with PCB (min 50%) + NEET</span></div></div>
+            <div class="detail-item"><i class="fas fa-users"></i><div><strong>Intake Capacity</strong><span>100 seats per year</span></div></div>
+            <div class="detail-item"><i class="fas fa-building"></i><div><strong>Affiliation</strong><span>MUHS, Nashik & NCISM</span></div></div>
+            <div class="detail-item"><i class="fas fa-rupee-sign"></i><div><strong>Annual Fee</strong><span>As per Govt. norms</span></div></div>
+            <div class="detail-item"><i class="fas fa-language"></i><div><strong>Medium</strong><span>English / Marathi</span></div></div>
+          </div>
+          <p style="font-size: 0.95rem; margin-bottom: 0;"><i class="fas fa-check-circle" style="color: #2d5e3b; margin-right: 6px;"></i> Hospital exposure from 2nd year, dedicated herbal garden, and modern lab facilities.</p>
+        </div>
+        <div class="course-cta">
+          <h4>Admissions Open 2025-26</h4>
+          <p>Limited seats. Apply early for BAMS.</p>
+          <a href="#" class="btn">Apply Now</a>
+          <a href="#" class="btn-outline btn">Download Brochure</a>
+          <p style="margin-top: 16px; font-size: 0.8rem; color: #8b877f;"><i class="fas fa-clock"></i> Last date: 31 Aug 2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hospital -->
+  <section id="hospital" style="background: #ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Ayurvedic Hospital</h2>
+        <p>Hands-on clinical training in a 200-bedded hospital with modern facilities and traditional therapies.</p>
+      </div>
+      <div class="hospital-grid">
+        <div class="hospital-text">
+          <h3>Healing with Ayurveda</h3>
+          <p>The attached hospital provides comprehensive Ayurvedic treatment for various chronic and lifestyle disorders. Students gain practical experience under the guidance of experienced vaidyas and medical officers.</p>
+          <p>Our hospital offers Panchakarma therapies, Ksharasutra, Agnikarma, and other specialized Ayurvedic procedures, along with modern diagnostic support.</p>
+          <div class="hospital-features">
+            <div class="feature"><i class="fas fa-bed"></i> 200 Beds</div>
+            <div class="feature"><i class="fas fa-spa"></i> Panchakarma</div>
+            <div class="feature"><i class="fas fa-x-ray"></i> Diagnostic Lab</div>
+            <div class="feature"><i class="fas fa-leaf"></i> Herbal Pharmacy</div>
+            <div class="feature"><i class="fas fa-user-md"></i> Expert Vaidyas</div>
+            <div class="feature"><i class="fas fa-clock"></i> 24/7 Emergency</div>
+          </div>
+        </div>
+        <div class="hospital-image"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Banner -->
+  <div class="admission-banner">
+    <div class="container">
+      <div>
+        <h3>Begin Your Ayurveda Journey</h3>
+        <p>Shape your future with a career in holistic healthcare.</p>
+      </div>
+      <a href="#contact" class="btn">Request a Callback</a>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <section id="contact" style="background: #fbfaf7;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>Get in touch with us for admissions, hospital inquiries, or any other information.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info-block">
+          <h3>Reach Us</h3>
+          <p>We are happy to assist you. Visit our campus or contact us through the details below.</p>
+          <div class="contact-detail">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Address</strong>
+              <span>Survey no.36,37/1, 40/2 At. Parsoda, Warora Tah. Warora, Dist Chandrapur, Maharashtra 442907</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-phone-alt"></i>
+            <div><strong>Phone</strong><a href="tel:9823423339">9823423339</a></div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-envelope"></i>
+            <div><strong>Email</strong><a href="mailto:mmbspm3339@gmail.com">mmbspm3339@gmail.com</a></div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-clock"></i>
+            <div><strong>Office Hours</strong><span>Monday – Saturday: 9:00 AM – 5:00 PM</span></div>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt" style="font-size: 2rem; margin-right: 10px;"></i>
+          <span>Map location: Parsoda, Warora, Chandrapur, Maharashtra 442907</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Mata Mahakali College of Ayurveda</h4>
+          <p>Survey no.36,37/1, 40/2 At. Parsoda, Warora Tah. Warora, Dist Chandrapur, Maharashtra 442907</p>
+          <p style="margin-top: 12px;"><i class="fas fa-phone-alt"></i> 9823423339</p>
+          <p><i class="fas fa-envelope"></i> mmbspm3339@gmail.com</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#courses">BAMS</a></li>
+            <li><a href="#hospital">Hospital</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="#courses">BAMS</a></li>
+            <li><a href="#">MD/MS (Ayurveda)</a></li>
+            <li><a href="#">Certificate Courses</a></li>
+            <li><a href="#">Ph.D.</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+            <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Mata Mahakali College of Ayurveda & Hospital, Warora. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript (embedded) -->
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === "#" || href === "") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    console.log('Mata Mahakali College of Ayurveda & Hospital — landing page loaded.');
+  </script>
+
+</body>
+</html>
